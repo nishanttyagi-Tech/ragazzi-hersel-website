@@ -20,6 +20,28 @@
   <div class="hero-copy"><span class="eyebrow">PIZZERIA RAGAZZI · HERSEL</span><h1>Lecker bestellen.<br><em>Einfach genießen.</em></h1><p>Pizza, Pasta, Salate, Snacks und viele weitere Gerichte bequem online bestellen.</p><div class="hero-actions"><a class="primary" href="#menu">Speisekarte ansehen</a><button class="secondary" id="deliveryButton">Lieferung oder Abholung</button></div></div>
   <div class="hero-card"><div class="pizza-art"><span>🍕</span></div><div class="hero-card-text"><strong>Heute geöffnet</strong><small>Mo, Mi–Fr 12:00–22:30 · Sa 15:00–22:30 · So 12:00–22:00</small></div></div>
 </section>
+
+<section class="popular-section container" aria-labelledby="popular-title">
+  <div class="popular-head"><div><span class="eyebrow">SCHNELL ZUM FAVORITEN</span><h2 id="popular-title">Beliebte Gerichte</h2></div></div>
+  <div class="popular-grid">
+    <button class="popular-card" type="button" data-category="Pizza"><span class="popular-icon pizza-icon">🍕</span><strong>Pizza</strong><span class="popular-arrow">›</span></button>
+    <button class="popular-card" type="button" data-category="Aus dem Backofen"><span class="popular-icon oven-icon">♨</span><strong>Aus dem<br>Backofen</strong><span class="popular-arrow">›</span></button>
+    <button class="popular-card" type="button" data-category="Salate"><span class="popular-icon salad-icon">🥬</span><strong>Salate</strong><span class="popular-arrow">›</span></button>
+    <button class="popular-card" type="button" data-category="Fleisch-Gerichte"><span class="popular-icon meat-icon">🥩</span><strong>Fleisch-<br>Gerichte</strong><span class="popular-arrow">›</span></button>
+    <button class="popular-card" type="button" data-category="Gyros vom Hähnchen"><span class="popular-icon gyros-icon">🍢</span><strong>Gyros vom<br>Hähnchen</strong><span class="popular-arrow">›</span></button>
+    <button class="popular-card" type="button" data-category="indische Gerichte"><span class="popular-icon indian-icon">🍛</span><strong>indische<br>Gerichte</strong><span class="popular-arrow">›</span></button>
+  </div>
+  <a class="popular-order" href="#menu">🛒 &nbsp; Jetzt online bestellen <span>→</span></a>
+</section>
+
+<section class="promo-banner container"><span class="promo-gift">🎁</span><strong>Bei einer Bestellung ab EUR 35,00 erhalten Sie 1 Flasche Cola GRATIS!</strong></section>
+
+<section class="quick-info container">
+  <div class="quick-card"><span class="quick-icon">🛵</span><div><h3>Lieferung</h3><p>Wir liefern frisch und schnell zu Ihnen nach Hause.</p><a href="#delivery">Liefergebiete ansehen</a></div></div>
+  <div class="quick-card"><span class="quick-icon">▣</span><div><h3>Abholung</h3><p>Bestellen Sie online und holen Sie von vor Ort ab.</p><a href="#contact">Standort & Kontakt</a></div></div>
+  <div class="quick-card"><span class="quick-icon">◷</span><div><h3>Öffnungszeiten</h3><p>Mo, Mi–Fr 12:00–22:30 · Sa 15:00–22:30 · So 12:00–22:00.</p></div></div>
+</section>
+
 <section class="order-strip"><div class="container order-grid"><div><span class="step">01</span><strong>Lieferung</strong><small>Wir bringen deine Bestellung zu dir</small></div><div><span class="step">02</span><strong>Abholung</strong><small>Bestellen und selbst abholen</small></div><div><span class="step">03</span><strong>Zahlung</strong><small>Bar · PayPal · EC-Karte</small></div></div></section>
 <section class="menu-section container" id="menu">
   <div class="section-head"><div><span class="eyebrow">UNSERE SPEISEKARTE</span><h2>Was darf es sein?</h2></div><p>Die Kategorien und Produktdaten werden an der bestehenden Speisekarte ausgerichtet. Keine Umbenennung der Gerichte.</p></div>
@@ -31,4 +53,19 @@
 </main>
 <aside class="cart-panel" id="cartPanel"><div class="cart-head"><h2>Warenkorb</h2><button id="closeCart">×</button></div><div id="cartItems" class="cart-items"><p class="empty">Dein Warenkorb ist noch leer.</p></div><div class="cart-total"><span>Gesamt</span><strong id="cartTotal">0,00 €</strong></div><button class="checkout" id="checkout">Zur Kasse</button></aside><div class="overlay" id="overlay"></div>
 <script src="app.js"></script>
+<script>
+// Popular category cards use the same category buttons as the main menu, so one click always opens the correct category.
+document.querySelectorAll('.popular-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const category = card.dataset.category;
+    const target = Array.from(document.querySelectorAll('.cat-btn')).find(btn => btn.textContent.trim() === category);
+    if (target) {
+      target.click();
+      document.getElementById('menu').scrollIntoView({behavior:'smooth', block:'start'});
+    } else {
+      document.getElementById('menu').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+});
+</script>
 </body></html>
